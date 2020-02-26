@@ -35,10 +35,10 @@ function xScale(trendData, chosenXAxis) {
 }
 function yScale(trendData, chosenYaxis) {
     var yLinearScale = d3.scaleLinear()
-    .domain([heighth, 0]);    
-    .range([d3.min(trendData, d => d[chosenYAxis]),
+        .domain([heighth, 0])   
+        .range([d3.min(trendData, d => d[chosenYAxis]),
             d3.max(trendData, d => d[chosenYAxis])
-        ])
+        ]);
     return yLinearScale;
 }
 function renderAxes(newXScale, xAxis) {
@@ -188,7 +188,7 @@ d3.csv("data.csv").then(function(trendData) {
                         .classed("active", false)
                         .classed("inactive", true);   
                 }
-                else (chosenXAxis === "smokesHigh") {
+                else if (chosenXAxis === "smokesHigh") {
                     smokesHighLabel
                         .classed("active", true)
                         .classed("inactive", false);
@@ -198,7 +198,7 @@ d3.csv("data.csv").then(function(trendData) {
                     healthcareLowLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                };
+                }
         }
     ylabelsGroup.selectAll("text")
         .on("click", function() {
@@ -231,7 +231,7 @@ d3.csv("data.csv").then(function(trendData) {
                         .classed("active", false)
                         .classed("inactive", true);   
                 }
-                else (chosenYAxis === "poverty") {
+                else if (chosenYAxis === "poverty") {
                     povertyLabel
                         .classed("active", true)
                         .classed("inactive", false);
@@ -247,3 +247,4 @@ d3.csv("data.csv").then(function(trendData) {
     }).catch(function(error) {
         console.log(error);
     });
+});
