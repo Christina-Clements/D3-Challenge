@@ -36,11 +36,20 @@
 }
 
 .chart {
+  position: fixed;
+  top: 50px;
+  left: 300px;
+  z-index: -1;
   display: block;
-  margin: 0;
+  width: 400px;
+  height: 300px;
+  content: " ";
+  opacity: 0.3;
+  overflow: hidden;
 }
 
 .d3-tip {
+  position: absolute;
   padding: 6px;
   font-size: 12px;
   line-height: 1;
@@ -55,7 +64,7 @@
 /* Mobile Rules */
 @media screen and (max-width: 530px) {
   .stateText {
-    display: none;
+    display: none
   }
 
   .aText {
