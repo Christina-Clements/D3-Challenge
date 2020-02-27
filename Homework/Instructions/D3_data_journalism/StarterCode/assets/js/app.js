@@ -1,6 +1,6 @@
 // @TODO: YOUR CODE HERE!
 var svgWidth = 960;
-var svgHeigt = 500;
+var svgHeight = 500;
 
 var margin = {
     top: 20,
@@ -14,13 +14,11 @@ var height = svgHeight - margin.top - margin.bottom;
 
 var svg = d3
     .select("#scatter")
-    .enter()
     .append("svg")
     .attr("width", svgWidth)
     .attr("height", svgHeight);
 
-var chartGroup = svg.enter()
-    .append("g")
+var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 var chosenXAxis = "healthcareLow";
@@ -83,7 +81,8 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     return circlesGroup;
 }
 
-d3.csv("data.csv").then(function(trendData) {
+d3.csv("data.csv").then(function(trendData, err) {
+    if (err) throw err;
     trendData.forEach(function(data) {
         data.healthcareLow = +data.healthcareLow;
         data.obesityHigh = +data.obesityHigh;
@@ -97,10 +96,12 @@ d3.csv("data.csv").then(function(trendData) {
     var bottomAxis = d3.axisBottom(xLinearScale);
     var leftAxis = d3.axisLeft(yLinearScale);
     var xAxis = chartGroup.append("g")
+        .enter()
         .classed("x-axis", true)
         .attr("transform",`translate(0, ${height})`)
         .call(bottomAxis);
     var yAxis = chartGroup.append("g")
+        .enter()
         .classed("y-axis", true)
         .attr("transform", `translate(${height}, 0)`)
         .call(leftAxis);
