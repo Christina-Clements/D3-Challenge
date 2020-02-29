@@ -25,8 +25,8 @@ var chosenXAxis = "healthcareLow";
 var chosenYAxis = "income";
 function xScale(trendData, chosenXAxis) {
     var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(trendData, d => d[chosenXAxis]),
-            d3.max(trendData, d =>d[chosenXAxis])
+        .domain([d3.min(trendData, d => d[chosenXAxis]) *.08,
+            d3.max(trendData, d =>d[chosenXAxis]) *1.2
         ])
         .range([0, width]);
     return xLinearScale;
@@ -81,7 +81,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     return circlesGroup;
 }
 
-d3.csv("data.csv").then(function(trendData, err) {
+d3.csv("assets/data/data.csv").then(function(trendData, err) {
     if (err) throw err;
     trendData.forEach(function(data) {
         data.healthcareLow = +data.healthcareLow;
