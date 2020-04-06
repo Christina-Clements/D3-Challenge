@@ -1,15 +1,16 @@
-.d3-tip{
-  padding: 20px;
-  border: 1px solid #e3e3e3;
+.tooltip{
+  padding: 2px;
+  padding-top: 8px;
+  border: 0;
   position: absolute;
-  top: 50px;
-  left: 300px;
-  z-index: -1;
-  display: block;
-  width: 400px;
-  height: 300px;
+  width: 135px;
+  height: 60px;
   content: " ";
   opacity: 0.3;
+  color:blue;
+  text-align: center;
+  background: skyblue;
+  border-radius: 10px;
 }
 
 /* Sticky Footer rules (https://getbootstrap.com/examples/sticky-footer/) */
